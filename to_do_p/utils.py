@@ -11,13 +11,13 @@ class ResponseData:
         self.success = success
 
     def message(self):
-        print(Fore.GREEN, self.data, self.status_code, Fore.RESET)
+        print(Fore.GREEN + self.data + Fore.RESET)
 
 
 class BadRequest:
-    def __init__(self, data, status_code=400):
+    def __init__(self, data, status_code=401):
         self.data = data
         self.status_code = status_code
 
     def message(self):
-        print(Fore.RED, self.data, self.status_code, Fore.RESET)
+        print(Fore.RED + self.data + Fore.RESET)

@@ -15,4 +15,3 @@ class Session:
 
     def check_session(self):
         return self.session
-

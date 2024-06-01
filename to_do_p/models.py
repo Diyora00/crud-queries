@@ -37,6 +37,7 @@ class User:
         self.login_try_count = login_try_count or 0
 
     def assign(self, li: tuple):
+        self.id = li[0]
         self.username = li[1]
         self.password = li[2]
         self.role = li[3]

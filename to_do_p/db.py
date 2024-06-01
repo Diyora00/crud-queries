@@ -28,25 +28,33 @@ create_todos_table = """create table todos(
 """
 
 
+def commit(func):
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        conn.commit()
+        return result
+    return wrapper
+
+
 def create_table():
     cur.execute(create_users_table)
     cur.execute(create_todos_table)
     conn.commit()
 
 
-def migrate():
-    insert_into_users = """
-    insert into users (username, password, role, status,login_try_count) 
-    values ('admin','123','SUPERADMIN','ACTIVE',0);
+# def migrate():
+#     insert_into_users = """
+#     insert into users (username, password, role, status,login_try_count)
+#     values ('admin','123','SUPERADMIN','ACTIVE',0);
+#
+#     """
+#     cur.execute(insert_into_users)
+#     conn.commit()
 
-    """
-    cur.execute(insert_into_users)
-    conn.commit()
 
+# def init():
+#     create_table()
+#     migrate()
 
-def init():
-    create_table()
-    migrate()
-
-if __name__ == '__main__':
-    init()
+# if __name__ == '__main__':
+#     init()
